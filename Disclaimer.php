@@ -22,7 +22,7 @@
                 session_start();
 
                 $_SESSION["terms"] = $_POST["termsCheckBox"];
-                header("Location: CustomerInfo.php");
+                 
             }
         }
         ?>

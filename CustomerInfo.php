@@ -10,14 +10,72 @@
     </head>
     <body>
         <?php include("./Lab4Common/Header.php"); ?>
+        <?php include("./Lab4Common/Functions.php"); ?>
         <?php
-        session_start();
+       session_start();
         if (isset($_SESSION["terms"])) {
             
-        } else {
-            header("Location: Disclaimer.php");
         }
+        else{
+          header("Location: Disclaimer.php"); 
+        }
+        
+        /*working with client info form
+        
+         */
+        if (isset($_POST["submit"])){
+            
+            $name = $_POST["name"];
+            $postCode = $_POST["postCode"];
+            $email = $_POST["email"];
+
+            $phone = $_POST["phone"];
+            $prefMethod = $_POST["prefMethod"];
+            $contactTime = $_POST["contactTime"];
+            
+            $nameValidateError = ValidateName($name);
+            $postalCodeValidateError = ValidatePostalCode($postCode);
+            $phoneValidateError = ValidatePhone($phone);
+            $emailValidateError = ValidateEmail($email);
+            
+            if (strlen($nameValidateError) > 0) {
+                array_push($errorlist, $nameValidateError);
+                $name = client;
+            }
+
+            if (strlen($postalCodeValidateError) > 0) {
+                array_push($errorlist, $postalCodeValidateError);
+            }
+            if (strlen($phoneValidateError) > 0) {
+                array_push($errorlist, $phoneValidateError);
+            }
+            if (strlen($emailValidateError) > 0) {
+                array_push($errorlist, $emailValidateError);
+            }
+
+
+            if (!isset($prefMethod)) {
+                $prefmethodError = "Contact method is required!";
+                $errorlist[] = $prefmethodError;
+            } else {
+                if ($prefMethod == "phone" && !isset($contactTime)) {
+
+                    $timeError = "When preferred contact method is phone, you need to select a time!";
+                    $errorlist[] = $timeError;
+                }
+            }
+
+            if (count($errorlist) <= 0){
+                header("Location: DepositCalculator.php");
+            }
+            
+        }
+            
+        
         ?>
+        
+        
+        
         <div class="container">
             <div class="content-center"><h2 class="content-center">Customer Information</h2></div>
             <br/>
