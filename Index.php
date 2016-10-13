@@ -4,13 +4,14 @@
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <meta http-equiv="x-ua-compatible" content="ie=edge">
-        <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.min.css">
-        <link rel="stylesheet" href="bower_components/font-awesome/css/font-awesome.min.css">
-        <link rel="stylesheet" href="main.css">
+        <link rel="stylesheet" href="./Lab4Contents/css/bootstrap.min.css">
+        <link rel="stylesheet" href="./Lab4Contents/fonts/"> 
+        <link rel="stylesheet" href="./Lab4Contents/AlgCss/Site.css">
     </head>
     
     <body>
-        <div class="container">
+        <?php include("./Lab4Common/Header.php"); ?>
+        <div class="container-fluid">
             <div class="row vertical-margin">
                 <div class="col-md-12">
                     <h2>Welcome To Algonquin Bank</h2>
@@ -23,7 +24,7 @@
             </div>
             <div class="row vertical-margin">
                 <div class="col-md-12">
-                    <ul><li><a href="DepositCalculator.php" >Deposit Calculator</a></li></ul>
+                    <ul><li><a href="Disclaimer.php" >Deposit Calculator</a></li></ul>
                 </div>          
             </div>
             
@@ -39,7 +40,7 @@
             
             
         </div>
-<?php include("./Lab4Common/Header.php"); ?>
+
 <?php include("./Lab4Common/Footer.php"); ?>
     </body>
 </html>
