@@ -11,53 +11,53 @@
 
     <body>
         <?php include("./Lab4Common/Header.php"); ?>
-        <div class="container">
-            <form method="post" action="<?php echo $_SERVER['PHP_SELF']; ?>">
-           
-            <div class="row vertical-margin">
-                <div class="col-md-12 text-center">
-                    <h2>Terms and Conditions</h2>
-                </div>          
-            </div>
-            <div class="row vertical-margin">
-                <div class="col-md-12">
-                    <p>I agree to abide by the Bank's Terms and Conditions and rules in force and the changes there to in Terms and Conditions from time to time relating to my account
-                        as communicated and made available on the Bank's Website</p>
-                    <span style="color:red"><?php print($error ); ?> </span>
-                    <p> <input type="checkbox" name="termsCheckBox">  I have read and agree with the terms and conditions</p>
-                </div>
-                                 
-                
-               <br/>
-               <button name="submit" type="submit" class="btn btn-primary">Start</button>
-            </div>
-                 
-            </form>
-            
-        </div>
-        <?php
-        
-        if (isset($_POST["submit"])){
+         <?php
+        if (isset($_POST["submit"])) {
             $terms = $_POST["termsCheckBox"];
-            
-           if($terms !=null){
-             session_start();
-             
-             $_SESSION["terms"] =  $_POST["termsCheckBox"];
-             header("Location: CustomerInfo.php");
-           }
-            else{
-                $error="You must accept terms and conditions";
-                
+
+            if ($terms == null) {
+                $error = "You must accept terms and conditions";
+            } else {
+
+                session_start();
+
+                $_SESSION["terms"] = $_POST["termsCheckBox"];
+                header("Location: CustomerInfo.php");
             }
         }
-                
-                
-        
         ?>
-        
+        <div class="container">
+            <form method="post" action="<?php echo $_SERVER['PHP_SELF']; ?>">
 
-        
+                <div class="row vertical-margin">
+                    <div class="col-md-12 text-center">
+                        <h2>Terms and Conditions</h2>
+                    </div>          
+                </div>
+                <div class="row vertical-margin">
+                    <div class="col-md-12">
+                        <p>I agree to abide by the Bank's Terms and Conditions and rules in force and the changes there to in Terms and Conditions from time to time relating to my account
+                            as communicated and made available on the Bank's Website
+                           
+                        </p>
+                         <span style="color:red"><?php echo $error ?></span>
+                        <p> <input type="checkbox" name="termsCheckBox">  I have read and agree with the terms and conditions</p>
+                        
+                       
+                    </div>
+
+
+                    <br/>
+                    <button name="submit" type="submit" class="btn btn-primary">Start</button>
+                </div>
+
+            </form>
+
+        </div>
+       
+
+
+
         <?php include("./Lab4Common/Footer.php"); ?>
     </body>
 </html>
